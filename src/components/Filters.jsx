@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { activeTodoLength, doneTodoLength, selectTodoItems } from '../features/todo/todoSlice';
-import Button from '../UI/buttons/button'
+import ButtonFilter from '../UI/buttons/ButtonFilter'
 
 export default function Filters() {
   const activeTodos = useSelector(activeTodoLength)
@@ -10,9 +10,9 @@ export default function Filters() {
 
   return (
     <div className="flex space-x-4 mt-4">
-        <Button filter='All'>All: {allTodos} </Button>
-        <Button filter='Active'>Active: {activeTodos}</Button>
-        <Button filter='Done'>Done: {doneTodos}</Button>
+        <ButtonFilter filter='All'>All: {allTodos} </ButtonFilter>
+        <ButtonFilter filter='Active'>Active: {activeTodos}</ButtonFilter>
+        <ButtonFilter filter='Done'>Done: {doneTodos}</ButtonFilter>
   </div>
   )
 }
