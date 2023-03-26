@@ -9,16 +9,15 @@ const todoSlice = createSlice({
                 state.unshift(action.payload)
             },
             prepare: (title) => ({
-               payload: {
-                title,
-                completed: {
-                    checked: false,
-                    textDecoration: 'no-underline'
-                },
-                id: nanoid(),
-                editable: false,
-                date: new Date(Date.now()).toDateString()
-               } 
+                payload: {
+                    title,
+                    completed: {
+                        checked: false,
+                    },
+                    id: nanoid(),
+                    editable: false,
+                    date: new Date(Date.now()).toDateString()
+                }
 
             })
         },
@@ -29,39 +28,38 @@ const todoSlice = createSlice({
         toggleTodo: (state, action) => {
             const checkedTodo = state.find(todo => todo.id === action.payload);
             checkedTodo.completed.checked = !checkedTodo.completed.checked
-            checkedTodo.completed.textDecoration = checkedTodo.completed.textDecoration === 'no-underline' ? 'line-through' : 'no-underline'
         },
 
         editTodoStart: (state, action) => {
             const editedTodo = state.find((todo) => todo.id === action.payload);
             editedTodo.editable = true
-          },
-          editCancel: (state, action) => {
+        },
+        editCancel: (state, action) => {
             const editedTodo = state.find((todo) => todo.id === action.payload);
             editedTodo.editable = false
-          },
+        },
 
-          updateTodo: (state, {payload}) => {
+        updateTodo: (state, { payload }) => {
             const editedTodo = state.find((todo) => todo.id === payload.id);
             editedTodo.title = payload.editedTitle;
             editedTodo.editable = false;
-          }
+        }
     }
 });
 
 
-export const {addTodo, removeTodo, toggleTodo, editTodoStart, editCancel, updateTodo} = todoSlice.actions;
-export const todoReducer = todoSlice.reducer; 
+export const { addTodo, removeTodo, toggleTodo, editTodoStart, editCancel, updateTodo } = todoSlice.actions;
+export const todoReducer = todoSlice.reducer;
 
 export const selectTodoValue = state => state.todo.title;
 export const selectEditable = state => state.todo.editable;
 export const selectTodoItems = state => state.todo;
 
 export const selectFilteredTodo = (state, filter = 'All') => {
-    switch(filter) {
-        case 'All': 
+    switch (filter) {
+        case 'All':
             return state.todo
-        
+
         case 'Active':
             return state.todo.filter(todo => !todo.completed.checked)
 

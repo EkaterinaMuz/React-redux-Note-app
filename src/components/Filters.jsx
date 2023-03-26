@@ -5,14 +5,14 @@ import ButtonFilter from '../UI/buttons/ButtonFilter'
 
 export default function Filters() {
   const activeTodos = useSelector(activeTodoLength)
-  const doneTodos  = useSelector(doneTodoLength)
+  const doneTodos = useSelector(doneTodoLength)
   const allTodos = useSelector(selectTodoItems).length
 
   return (
     <div className="flex space-x-4 mt-4">
-        <ButtonFilter filter='All'>All: {allTodos} </ButtonFilter>
-        <ButtonFilter filter='Active'>Active: {activeTodos}</ButtonFilter>
-        <ButtonFilter filter='Done'>Done: {doneTodos}</ButtonFilter>
-  </div>
+      <ButtonFilter filter='All'>All: {allTodos} </ButtonFilter>
+      <ButtonFilter filter='Active'>Active: {activeTodos}</ButtonFilter>
+      <ButtonFilter filter='Done'>Done: {doneTodos}</ButtonFilter>
+    </div>
   )
 }

@@ -10,7 +10,8 @@ export default function TodoItemEdit({id, title}) {
         
             <textarea 
             className='w-full min-h-[150px] resize-none border-none outline-none bg-transparent' 
-            type='text' value={editedTitle} 
+            type='text' 
+            value={editedTitle} 
             onChange={(e) => setEditedTitle(e.target.value)}  />
        </div>
 

@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { persistReducer, persistStore,
+import {
+    persistReducer, persistStore,
     FLUSH,
     REHYDRATE,
     PAUSE,
@@ -11,7 +12,7 @@ import storage from "redux-persist/lib/storage";
 import { filterReducer } from "./filter/filterSlice";
 import { todoReducer } from "./todo/todoSlice";
 
-const rootReducer = combineReducers({ 
+const rootReducer = combineReducers({
     todo: todoReducer,
     filter: filterReducer
 });
@@ -28,9 +29,9 @@ export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
         }
-      })
+    })
 
 });
 
