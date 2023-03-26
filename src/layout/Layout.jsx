@@ -6,7 +6,7 @@ export default function Layout({children}) {
     <div className='bg-zinc-900 text-white '>
         <Container>
           {children}
-        </Container>  
+        </Container>
     </div>
   )
 };
