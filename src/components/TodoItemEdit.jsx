@@ -7,7 +7,6 @@ export default function TodoItemEdit({id, title}) {
   return (
    <>
       <div className='flex items-center py-2 px-4 min-h-[150px] rounded-2xl w-full bg-zinc-800'>
-        
             <textarea 
             className='w-full min-h-[150px] resize-none border-none outline-none bg-transparent' 
             type='text' 

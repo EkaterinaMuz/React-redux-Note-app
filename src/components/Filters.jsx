@@ -15,4 +15,4 @@ export default function Filters() {
       <ButtonFilter filter='Done'>Done: {doneTodos}</ButtonFilter>
     </div>
   )
-}
+};

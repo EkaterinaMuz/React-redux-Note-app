@@ -1,10 +1,9 @@
-import { ImCheckboxUnchecked } from 'react-icons/im';
-import { BsFillCheckSquareFill } from 'react-icons/bs';
 import { BsTrash3 } from 'react-icons/bs';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
-import { editTodoStart, removeTodo, toggleTodo } from '../features/todo/todoSlice';
+import { editTodoStart, removeTodo } from '../features/todo/todoSlice';
 import TodoItemEdit from './TodoItemEdit';
+import Checkbox from './Checkbox';
 
 export default function TodoItem({ title, id, completed, date, editable }) {
   const dispatch = useDispatch();
@@ -21,20 +20,10 @@ export default function TodoItem({ title, id, completed, date, editable }) {
 
             <div
               className='flex items-center mb-2 p-2 pb-6'>
-              <div onClick={() => dispatch(toggleTodo(id))}>
-                {
-                  completed.checked
-                    ?
-                    <BsFillCheckSquareFill size={22}
-                      className='text-sky-500 mr-4' />
-                    :
-                    <ImCheckboxUnchecked size={22}
-                      className='text-sky-500 mr-4' />
-                }
-              </div>
-
+              <Checkbox completed={completed} id={id} />
               <div
-                className={`min-h-fit w-full text-left grow break-all ${completed.checked ? 'line-through' : 'no-underline'}`}>
+                className={`min-h-fit w-full text-left grow break-all 
+                ${completed.checked ? 'line-through' : 'no-underline'}`}>
                 {title}
               </div>
 
